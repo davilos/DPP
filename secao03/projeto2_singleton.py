@@ -1,12 +1,8 @@
-from typing_extensions import Self
-from typing import Dict
-
-
 class SanidadeCheck:
 
-    __instance: Dict[type, type] = None
+    __instance = None
 
-    def __new__(cls: type[Self], *args, **kwargs) -> __instance:
+    def __new__(cls, *args, **kwargs):
         if not SanidadeCheck.__instance:
             SanidadeCheck.__instance = super(SanidadeCheck, cls).__new__(
                 cls,
@@ -16,7 +12,7 @@ class SanidadeCheck:
         return SanidadeCheck.__instance
 
     def __init__(self) -> None:
-        self.__servidores = []
+        self.__servidores: list = []
 
     def checar_servidor(self, srv):
         print(f'Checando o {self.__servidores[srv]}')
